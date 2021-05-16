@@ -1,10 +1,10 @@
 plugins {
 	kotlin("jvm") version "1.5.0"
-	id("maven")
+	`maven-publish`
 }
 
 group = "hex"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
 	mavenCentral()

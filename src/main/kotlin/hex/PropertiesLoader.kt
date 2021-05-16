@@ -2,6 +2,7 @@ package hex
 
 import java.io.File
 import java.util.Properties
+import java.util.stream.Collectors.toList
 
 object PropertiesLoader {
 	private val fileIsProperty: (File) -> Boolean = { it.extension == "properties" }
@@ -36,7 +37,7 @@ object PropertiesLoader {
 	private fun localFiles(): Array<File> = File(".").listFiles() ?: arrayOf()
 	
 	private fun appResources(): Array<File> =
-		Thread.currentThread().contextClassLoader.resources("").toList()
+		Thread.currentThread().contextClassLoader.resources("").collect(toList())
 			.map { it.toURI() }
 			.filter { it.isAbsolute }
 			.filterNot { it.isOpaque }
