@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "hex"
-version = "1.0.3"
+version = "1.0.4"
 
 repositories {
 	mavenCentral()
@@ -16,3 +16,17 @@ dependencies {
 tasks.test {
 	useJUnitPlatform {}
 }
+
+
+publishing {
+	publications {
+		create<MavenPublication>("maven") {
+			groupId = "hex"
+			artifactId = "PropertiesLoader"
+			version = version
+			
+			from(components["java"])
+		}
+	}
+}
+
